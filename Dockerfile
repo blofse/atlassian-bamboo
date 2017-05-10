@@ -8,8 +8,10 @@ ENV BAMBOO_VERSION=6.0.0 \
 # Install Atlassian JIRA and helper tools and setup initial home
 # directory structure.
 RUN set -x
-RUN apk add --no-cache libressl wget
-RUN apk add --no-cache libressl tar
+RUN apk add --no-cache libressl
+RUN apk add --no-cache wget
+RUN apk add --no-cache tar
+
 RUN mkdir -p "${BAMBOO_HOME}"
 RUN mkdir -p "${BAMBOO_INSTALL}"
 RUN wget -O "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" --no-verbose "http://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz"
