@@ -16,7 +16,7 @@ RUN mkdir -p "${BAMBOO_INSTALL}"
 RUN wget -O "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" --no-verbose "http://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz"
 RUN tar -xzvf "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" -C "${BAMBOO_INSTALL}" --strip-components=1
 
-RUN  sed -i 's~bamboo.home=C:/bamboo/bamboo-home~bamboo.home=${BAMBOO_HOME}~g' ${BAMBOO_INSTALL}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
+RUN sed -i 's~bamboo.home=C:/bamboo/bamboo-home~bamboo.home=${BAMBOO_HOME}~g' ${BAMBOO_INSTALL}/atlassian-bamboo/WEB-INF/classes/bamboo-init.properties
 
 RUN adduser -D -u 1000 bamboo
 RUN chown -R bamboo "${BAMBOO_HOME}"
