@@ -9,6 +9,9 @@ yes | cp docker-atlassian-bamboo-postgres.service /etc/systemd/system/.
 yes | cp docker-atlassian-bamboo.service /etc/systemd/system/.
 systemctl daemon-reload
 
+systemctl enable docker-atlassian-bamboo-postgres
+systemctl enable docker-atlassian-bamboo
+
 systemctl start docker-atlassian-bamboo-postgres
 systemctl start docker-atlassian-bamboo
 echo Done!
