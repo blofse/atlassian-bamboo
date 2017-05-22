@@ -1,4 +1,4 @@
-# atlassian-bamboo
+# atlassian-bamboo - A docker image containing version 6.0.0 based on alpine linux
 Restartable, persistent docker image for atlassian bamboo
 
 Any feedback let me know - its all welcome!
