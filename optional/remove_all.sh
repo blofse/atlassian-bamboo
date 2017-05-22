@@ -21,10 +21,13 @@ docker stop atlassian-bamboo-postgres || true && docker rm atlassian-bamboo-post
 docker stop atlassian-bamboo || true && docker rm atlassian-bamboo || true
 
 echo Removing volumes
-docker volume rm BambooPostgresData || true
-docker volume rm BambooHomeVolume || true
+docker volume rm atlassian-bamboo-postgres-data || true
+docker volume rm atlassian-bamboo-home || true
 
 echo Removing networks
-docker network rm BambooNetwork || true
+docker network rm atlassian-bamboo-network || true
+
+echo Removing docker image - bamboo only
+docker rmi atlassian-bamboo
 
 echo Done!
