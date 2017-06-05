@@ -5,8 +5,8 @@ docker stop atlassian-bamboo
 docker stop atlassian-bamboo-postgres
 
 echo Copying and running service
-yes | cp docker-atlassian-bamboo-postgres.service /etc/systemd/system/.
-yes | cp docker-atlassian-bamboo.service /etc/systemd/system/.
+yes | cp optional/docker-atlassian-bamboo-postgres.service /etc/systemd/system/.
+yes | cp optional/docker-atlassian-bamboo.service /etc/systemd/system/.
 systemctl daemon-reload
 
 systemctl enable docker-atlassian-bamboo-postgres
