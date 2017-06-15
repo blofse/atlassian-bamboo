@@ -1,12 +1,12 @@
 FROM openjdk:8-alpine
 
 # Configuration variables.
-ENV BAMBOO_VERSION=6.0.1 \
+ENV BAMBOO_VERSION=6.0.3 \
     BAMBOO_HOME=/var/atlassian/application-data/bamboo \
     BAMBOO_INSTALL=/opt/atlassian/bamboo
 
 RUN set -x \
-    && apk --no-cache add libressl wget tar \
+    && apk --no-cache add libressl wget tar bash \
     && mkdir -p "${BAMBOO_HOME}" && mkdir -p "${BAMBOO_INSTALL}" \
     && wget -O "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" --no-verbose "http://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" \
     && tar -xzvf "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" -C "${BAMBOO_INSTALL}" --strip-components=1 \
@@ -22,7 +22,7 @@ RUN set -x \
 EXPOSE 8085
 
 # Create the volumes and mount
-VOLUME ["${BAMBOO_HOME}"]
+VOLUME [ "${BAMBOO_INSTALL}, "${BAMBOO_HOME}" ]
 
 WORKDIR ${BAMBOO_HOME}
 
