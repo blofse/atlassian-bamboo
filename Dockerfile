@@ -6,7 +6,7 @@ ENV BAMBOO_VERSION=6.2.1 \
     BAMBOO_INSTALL=/opt/atlassian/bamboo
 
 RUN set -x \
-    && apk --no-cache add libressl wget tar bash openssh git \
+    && apk --no-cache add libressl wget tar bash openssh tzdata git \
     && mkdir -p "${BAMBOO_HOME}" && mkdir -p "${BAMBOO_INSTALL}" \
     && wget -O "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" --no-verbose "http://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" \
     && tar -xzvf "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" -C "${BAMBOO_INSTALL}" --strip-components=1 \
@@ -16,7 +16,8 @@ RUN set -x \
     && chown -R bamboo "${BAMBOO_HOME}" \
     && chown -R bamboo "${BAMBOO_INSTALL}" \
     && chmod -R 700 "${BAMBOO_HOME}" \
-    && chmod -R 700 "${BAMBOO_INSTALL}"
+    && chmod -R 700 "${BAMBOO_INSTALL}" \
+    && cp /usr/share/zoneinfo/Europe/London /etc/localtime
 
 # Expose default HTTP connector port.
 EXPOSE 8085
