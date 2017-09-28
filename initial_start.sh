@@ -22,6 +22,7 @@ docker run \
   --name atlassian-bamboo \
   -p 8085:8085 \
   -v atlassian-bamboo-home:/var/atlassian/application-data/bamboo \
+  -v atlassian-bamboo-serverconf:/opt/atlassian/bamboo/conf \
   --net atlassian-bamboo-network \
   -d \
   atlassian-bamboo

@@ -1,7 +1,7 @@
 FROM openjdk:8-alpine
 
 # Configuration variables.
-ENV BAMBOO_VERSION=6.1.1 \
+ENV BAMBOO_VERSION=6.2.1 \
     BAMBOO_HOME=/var/atlassian/application-data/bamboo \
     BAMBOO_INSTALL=/opt/atlassian/bamboo
 
