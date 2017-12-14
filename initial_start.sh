@@ -21,6 +21,9 @@ docker run \
 docker run \
   --name atlassian-bamboo \
   -p 8085:8085 \
+  -p 16001:16001 \
+  -p 16002:16002 \
+  -p 7222:7222 \
   -v atlassian-bamboo-home:/var/atlassian/application-data/bamboo \
   -v atlassian-bamboo-serverconf:/opt/atlassian/bamboo/conf \
   --net atlassian-bamboo-network \

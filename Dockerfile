@@ -1,7 +1,7 @@
 FROM openjdk:8-alpine
 
 # Configuration variables.
-ENV BAMBOO_VERSION=6.2.1 \
+ENV BAMBOO_VERSION=6.2.5 \
     BAMBOO_HOME=/var/atlassian/application-data/bamboo \
     BAMBOO_INSTALL=/opt/atlassian/bamboo
 
@@ -17,10 +17,11 @@ RUN set -x \
     && chown -R bamboo "${BAMBOO_INSTALL}" \
     && chmod -R 700 "${BAMBOO_HOME}" \
     && chmod -R 700 "${BAMBOO_INSTALL}" \
-    && cp /usr/share/zoneinfo/Europe/London /etc/localtime
+    && cp /usr/share/zoneinfo/Europe/London /etc/localtime \
+    && sed -i 's~<Context path="" docBase="${catalina.home}/atlassian-bamboo~<Context path="/bamboo" docBase="${catalina.home}/atlassian-bamboo~g' ${BAMBOO_INSTALL}/conf/server.xml
 
 # Expose default HTTP connector port.
-EXPOSE 8085
+EXPOSE 8085 16001 16002 7222
 
 # Create the volumes and mount
 VOLUME [ "${BAMBOO_INSTALL}, "${BAMBOO_HOME}" ]
