@@ -6,7 +6,7 @@ ENV BAMBOO_VERSION=6.2.5 \
     BAMBOO_INSTALL=/opt/atlassian/bamboo
 
 RUN set -x \
-    && apk --no-cache add libressl wget tar bash openssh tzdata git \
+    && apk --no-cache add libressl wget tar bash openssh tzdata maven git \
     && mkdir -p "${BAMBOO_HOME}" && mkdir -p "${BAMBOO_INSTALL}" \
     && wget -O "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" --no-verbose "http://www.atlassian.com/software/bamboo/downloads/binary/atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" \
     && tar -xzvf "atlassian-bamboo-${BAMBOO_VERSION}.tar.gz" -C "${BAMBOO_INSTALL}" --strip-components=1 \
