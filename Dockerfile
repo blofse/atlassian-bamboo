@@ -1,7 +1,7 @@
-FROM openjdk:8-alpine
+FROM anapsix/alpine-java:8_jdk-dcevm_unlimited
 
 # Configuration variables.
-ENV BAMBOO_VERSION=6.3.2 \
+ENV BAMBOO_VERSION=6.6.2 \
     BAMBOO_HOME=/var/atlassian/application-data/bamboo \
     BAMBOO_INSTALL=/opt/atlassian/bamboo
 
@@ -24,7 +24,7 @@ RUN set -x \
 EXPOSE 8085 16001 16002 7222
 
 # Create the volumes and mount
-VOLUME [ "${BAMBOO_INSTALL}, "${BAMBOO_HOME}" ]
+VOLUME [ "${BAMBOO_INSTALL}", "${BAMBOO_HOME}" ]
 
 WORKDIR ${BAMBOO_HOME}
 
